@@ -42,14 +42,14 @@ function setup() {
 		}));
 	}
 
-	obstacles.push(new Obstacle(330, 200, 150, 30));
+	obstacles.push(new Obstacle(330, 300, 150, 30));
 
 	let fitFunc = function(r) {
 		let distance = r.pos.dist(target.pos);
 		distance = max(distance, 1.0);
 		return 1.0 / distance;
 	};
-	algorithm = new GenAlgorithm(fitFunc, 0.95, 0.3, 0.05);
+	algorithm = new GenAlgorithm(fitFunc, 0.95, 0.5, 0.02);
 	algorithm.loadInitialPopulation(rockets);
 	currentTimeoutID = window.setTimeout(rocketsTimeout, 20 * 1000);
 }
