@@ -6,8 +6,7 @@ let currentTimeoutID = -1;
 
 const rocketSize = 20;
 
-let rocketPopulationSize = 50;
-let rockets = [];
+let rocketPopulationSize = 100;
 let rocketImg;
 let rocketImgRatio = 1;
 
@@ -33,6 +32,8 @@ function setup() {
 	spawnPoint = createVector(width / 2.0, height - rocketSize * rocketImgRatio * 2);
 	target = new Target(createVector(400, 100), 30);
 	notActiveRockets = 0;
+	let rockets = [];
+
 
 	for(let i of Array(rocketPopulationSize).keys())
 	{
@@ -42,7 +43,10 @@ function setup() {
 		}));
 	}
 
-	obstacles.push(new Obstacle(330, 300, 150, 30));
+	obstacles.push(new Obstacle(330, 300, 110, 30));
+	obstacles.push(new Obstacle(430, 30, 110, 30));
+	obstacles.push(new Obstacle(330, 200, 20, 80));
+
 
 	let fitFunc = function(r) {
 		let distance = r.pos.dist(target.pos);
@@ -140,18 +144,6 @@ function detectTargetHit()
 			console.log("HIT!!!");
 		}
 	}
-}
-
-function whereIsMouse()
-{
-	stroke(1);
-	if (mouseIsPressed) {
-		fill(0);
-	} 
-	else {
-		fill(255);
-	}
-	ellipse(mouseX, mouseY, 20, 20);
 }
 
 function rocketsTimeout() {

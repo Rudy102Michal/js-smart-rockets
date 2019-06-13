@@ -9,7 +9,7 @@ class Rocket {
     constructor(position, rocketWidth, heightToWidthRatio, drawFunction=null, genome=null) {
         this.pos = position.copy();
         this.startingPos = this.pos.copy();
-        this.velocity = createVector(0.0, 0.0);//p5.Vector.random2D().mult(random(1, 4));
+        this.velocity = createVector(0.0, 0.0);
         this.ratio = heightToWidthRatio;
         this.width = rocketWidth;
         this.height = int(this.width * this.ratio);
@@ -35,11 +35,8 @@ class Rocket {
         push();
         translate(this.pos.x, this.pos.y);
         rotate(this.velocity.heading() + HALF_PI);
-        //defaultDrawFunction(this.width, this.height);
         this.drawFunction(this.width, this.height);
         pop();
-        fill(255, 255, 255);
-        ellipse(this.pos.x, this.pos.y, 2);
     }
 
     physicsUpdate(delta) {
